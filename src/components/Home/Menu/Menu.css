@@ -1,0 +1,41 @@
+header{
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+    border-bottom: 1px solid lightskyblue;
+    width: 100%;
+    height: 8%;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+li {
+    float: right;
+    height: 100%;
+
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    /* color: #1750A4; */
+    color: lightskyblue;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    height: 100%;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.link:hover {
+    background-color: lightskyblue;
+    color:white;
+}
+

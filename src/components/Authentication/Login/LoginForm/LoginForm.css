@@ -8,8 +8,9 @@
     width: 25%;
     height: 70%;
     /* margin: 25% 25% 25% 25%; */
-    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1); 
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1);
 }
+
 img{
     display: block;
 }
@@ -70,3 +71,4 @@ input{
         margin: 2rem 0;
     }
 }
+

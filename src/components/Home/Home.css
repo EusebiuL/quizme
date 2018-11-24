@@ -1,0 +1,53 @@
+.homeWrapper{
+    /* background-color: #AFEAF5; */
+    background-color: white;
+
+    color: lightskyblue;
+    font:inherit;
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    width: 100vw;
+    height: 100vh;
+
+}
+
+.homeButton{
+
+    border: 1px solid white;
+    padding: 16px;
+    background-color: lightskyblue;
+    font: inherit;
+    color: white;
+    cursor: pointer;
+    border-radius: 30px;
+    width: 15%;
+    height: 3%;
+    /* align-self:  */
+    margin-top: 20%;
+    font-family: 'Poppins', sans-serif;
+    justify-content: left;
+    margin-left: -35%;
+    text-decoration: none;
+
+}
+
+.homeButton:hover{
+    color: #1750A4;
+    background-color: white;
+    border: 1px solid lightskyblue;
+
+}
+
+h1{
+    font-family: 'Poppins', sans-serif;
+    font-size:80px;
+    color: lightskyblue;
+    width: 40%;
+    margin-left: 15%;
+    margin-top: -5%;
+    text-align: left;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
