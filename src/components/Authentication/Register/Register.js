@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
 import RegisterForm from "./RegisterForm/RegisterForm";
-import "./Register.css";
+import classes from "./Register.css";
 
 class Register extends Component {
     state = {
@@ -41,13 +41,13 @@ class Register extends Component {
           ) : null;
 
           return (
-        <div className="outerdiv">
+        <div className={classes.outerdiv}>
             <RegisterForm 
                 change={this.handleChange} 
                 submit={this.handleSubmit}  
             />
             
-            <div className="error">{error}</div>
+            <div className={classes.error}>{error}</div>
         </div>
           );
         

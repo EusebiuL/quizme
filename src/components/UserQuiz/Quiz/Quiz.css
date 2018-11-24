@@ -1,0 +1,68 @@
+.container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 3px;
+  }
+
+  .answerOptions {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height:300px; /*your fixed height*/
+    -webkit-column-count: 3;
+       -moz-column-count: 3;
+            column-count: 3;
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    /* margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px; */
+  }
+* {
+  box-sizing: border-box;
+}
+   
+  @media (min-width: 769px) {
+    .container {
+      margin: 2.5rem auto;
+    }
+  }
+
+  /* Animation */
+.fade-enter {
+    opacity: 0;
+  }
+  
+  .fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out 0.3s;
+  }
+  
+  .fade-leave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 1;
+  }
+  
+  .fade-leave.fade-leave-active {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .fade-appear {
+    opacity: 0;
+  }
+  
+  .fade-appear.fade-appear-active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  

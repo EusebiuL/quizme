@@ -1,0 +1,49 @@
+.question {
+    margin: 0;
+    padding: 0.5rem 2.5rem 1.5rem 2.5rem;
+  }
+
+  h2{
+    font-family: 'Poppins', sans-serif;
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+  
+  }
+
+  /* Animation */
+.fade-enter {
+    opacity: 0;
+  }
+  
+  .fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out 0.3s;
+  }
+  
+  .fade-leave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 1;
+  }
+  
+  .fade-leave.fade-leave-active {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .fade-appear {
+    opacity: 0;
+  }
+  
+  .fade-appear.fade-appear-active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  

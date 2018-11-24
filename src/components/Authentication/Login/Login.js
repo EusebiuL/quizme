@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
 import LoginForm from "./LoginForm/LoginForm";
-import "./Login.css";
+import classes from "./Login.css";
 
 class Login extends Component {
     state = {
@@ -48,12 +48,12 @@ class Login extends Component {
           ) : null;
 
           return (
-        <div className="outerdiv">
+        <div className={classes.outerdiv}>
             <LoginForm 
                 change={this.handleChange} 
                 submit={this.handleSubmit}  
             />
-            <div className="error">{error}</div>
+            <div className={classes.error}>{error}</div>
             {/* <div className="forgotPassword"><h5>Forgot your password?</h5></div> */}
 
         </div>

@@ -8,10 +8,10 @@ header{
 }
 
 ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: flex-end;
-    height: 100%;
+    list-style-type: none !important;
+    display: flex !important; 
+    justify-content: flex-end !important;
+    height: 100% !important;
 }
 
 li {
