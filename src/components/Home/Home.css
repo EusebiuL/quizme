@@ -15,14 +15,14 @@
 .homeButton{
 
     border: 1px solid white;
-    padding: 16px;
+    padding: 16px !important;
     background-color: lightskyblue;
     font: inherit;
     color: white;
     cursor: pointer;
     border-radius: 30px;
     width: 15%;
-    height: 3%;
+    height: 7%;
     /* align-self:  */
     margin-top: 20%;
     font-family: 'Poppins', sans-serif;

@@ -7,9 +7,19 @@ class Login extends Component {
     state = {
         email: "",
         password: "",
-        authError: ""
+        authError: "",
+        access_token: "",
+        expires_in: "",
+        refresh_token: "",
+        scope: "",
+        token_type: ""
     };
-    
+    /* 
+    http://108fb526.ngrok.io/oauth/token?
+    grant_type=password&
+    username=alexandrupetrutstoica1@gmail.com
+    &password=admin
+    */
     handleChange = e => {
         this.setState({
           [e.target.id]: e.target.value,
@@ -18,22 +28,32 @@ class Login extends Component {
       };
 
       handleSubmit = e => {
+        var basicAuth = 'Basic ' + 
         e.preventDefault();
         axios
           .get(
-            "http://localhost:8080/api/user/" +
+            "http://108fb526.ngrok.io/oauth/token?grant_type=password&username=" +
               this.state.email +
-              "/" +
+              "&password=" +
               this.state.password
+              ,
+              {
+                auth: {
+                  username: 'my-trusted-client',
+                  password: 'secret'
+                }
+              }
           )
           .then(res => {
             console.log(res);
             console.log(res.data);
             this.setState({
-              authError: false
+              authError: false,
+              access_token: res.data.access_token
             });
-            this.props.authStatus(true, this.state.email);
-            this.props.history.push("/");
+            localStorage.setItem("Authorization", res.data.access_token);
+            this.props.history.push("/home");
+
           })
           .catch(error => {
             this.setState({
@@ -54,8 +74,6 @@ class Login extends Component {
                 submit={this.handleSubmit}  
             />
             <div className={classes.error}>{error}</div>
-            {/* <div className="forgotPassword"><h5>Forgot your password?</h5></div> */}
-
         </div>
           );
         

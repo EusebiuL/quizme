@@ -4,6 +4,7 @@ import Quiz from '../Quiz/Quiz';
 import Result from '../Result/Result';
 import logo from '../../../logo.svg';
 import classes from "./QuizBuilder.css";
+import axios from 'axios';
 
 class QuizBuilder extends Component {
   constructor(props) {
@@ -13,13 +14,26 @@ class QuizBuilder extends Component {
       counter: 0,
       questionId: 1,
       question: '',
-      answerOptions: [],
+      answerOptions: [{}],
+      questionDtoOutList: [{
+        sentence: '',
+        options: [{
+          id:0,
+          opt: ''
+        }],
+      }],
       answer: '',
       answersCount: {
         Nintendo: 0,
         Microsoft: 0,
         Sony: 0
       },
+      answeredQuestions:[{
+        questions:{
+          question: '',
+          answer: ''
+        },
+      }],
       result: ''
     };
 
@@ -27,13 +41,23 @@ class QuizBuilder extends Component {
   }
 
   componentWillMount() {
-    const shuffledAnswerOptions = quizQuestions.map(question =>
-      this.shuffleArray(question.answers)
-    );
+    axios.get(
+      "http://108fb526.ngrok.io/quiz/1",
+    {
+      headers: { 'Authorization': "Bearer " + localStorage.getItem("Authorization")}
+    }
+  ).then(res => {
+    console.log(res.data.questionDtoOutList[0].options);
+
     this.setState({
-      question: quizQuestions[0].question,
-      answerOptions: shuffledAnswerOptions[0]
-    });
+      questionDtoOutList: res.data.questionDtoOutList,
+      question: res.data.questionDtoOutList[this.state.counter].sentence,
+      answerOptions: res.data.questionDtoOutList[this.state.counter].options
+    })
+  }
+  );
+
+    
   }
 
   shuffleArray(array) {
@@ -58,8 +82,9 @@ class QuizBuilder extends Component {
 
   handleAnswerSelected(event) {
     this.setUserAnswer(event.currentTarget.value);
+    console.log(this.state.answerOptions);
 
-    if (this.state.questionId < quizQuestions.length) {
+    if (this.state.questionId < this.state.questionDtoOutList.length + 2) {
       setTimeout(() => this.setNextQuestion(), 300);
     } else {
       setTimeout(() => this.setResults(this.getResults()), 300);
@@ -67,26 +92,39 @@ class QuizBuilder extends Component {
   }
 
   setUserAnswer(answer) {
+    const previousQuestion = this.state.questionDtoOutList[this.state.counter].sentence;
+    const previousAnswer = answer;
+    const questionObj = Object.assign({}, {question:{question:previousQuestion, answer:previousAnswer}});
+    console.log(this.state.answerOptions);
+    console.log(questionObj);
+
     this.setState((state, props) => ({
-      answersCount: {
-        ...state.answersCount,
-        [answer]: state.answersCount[answer] + 1
-      },
+      answeredQuestions: this.state.answeredQuestions.push(questionObj),
       answer: answer
     }));
+    console.log(this.state.answerOptions);
+
   }
 
   setNextQuestion() {
+  
     const counter = this.state.counter + 1;
     const questionId = this.state.questionId + 1;
+    const question = this.state.questionDtoOutList[this.state.counter].sentence;
+    const answerOption = this.state.questionDtoOutList[this.state.counter].options.clone();
 
+    console.log(answerOption);
+    console.log(question);
     this.setState({
       counter: counter,
       questionId: questionId,
-      question: quizQuestions[counter].question,
-      answerOptions: quizQuestions[counter].answers,
-      answer: ''
-    });
+      question: question,
+      answerOptions: answerOption,
+      answer:''
+      }
+    );
+    // console.log(this.state.answerOptions);
+
   }
 
   getResults() {
@@ -107,13 +145,14 @@ class QuizBuilder extends Component {
   }
 
   renderQuiz() {
+    console.log(this.state.answerOptions);
     return (
       <Quiz
         answer={this.state.answer}
         answerOptions={this.state.answerOptions}
         questionId={this.state.questionId}
         question={this.state.question}
-        questionTotal={quizQuestions.length}
+        questionTotal={this.state.questionDtoOutList.length}
         onAnswerSelected={this.handleAnswerSelected}
       />
     );

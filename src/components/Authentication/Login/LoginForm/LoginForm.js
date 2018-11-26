@@ -10,10 +10,10 @@ class LoginForm extends Component {
         <img src={logo}></img>
             <form onSubmit={this.props.submit} className={classes.form}>
                 <div className={classes.inputField}>
-                    <input onChange={this.props.change} placeholder="Email" type="text"></input>
+                    <input onChange={this.props.change} placeholder="Email" type="text" id="email"></input>
                 </div>
                 <div className={classes.inputField}>
-                    <input onChange={this.props.change} placeholder="Password" type="password"></input>
+                    <input onChange={this.props.change} placeholder="Password" type="password" id="password"></input>
                 </div>
                 <div>
                     <button className={classes.button}>LOGIN</button>

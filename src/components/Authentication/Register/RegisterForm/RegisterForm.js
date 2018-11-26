@@ -10,19 +10,19 @@ class RegisterForm extends Component {
         <img src={logo}></img>
             <form onSubmit={this.props.submit} className={classes.form}>
                 <div className={classes.inputField}>
-                    <input onChange={this.props.change} placeholder="Email" type="text"></input>
+                    <input onChange={this.props.change} placeholder="Email" type="text" id="email"></input>
                 </div>
                 <div className={classes.inputField}>
-                    <input onChange={this.props.change} placeholder="Name" type="text"></input>
+                    <input onChange={this.props.change} placeholder="Name" type="text" id="name"></input>
                 </div>
                 <div className={classes.inputField}>
-                    <input onChange={this.props.change} placeholder="Phone Number" type="text"></input>
+                    <input onChange={this.props.change} placeholder="Phone Number" type="text" id="phone"></input>
                 </div>
                 <div className={classes.inputField}>
-                    <input onChange={this.props.change} placeholder="Password" type="password"></input>
+                    <input onChange={this.props.change} placeholder="Password" type="password" id="password"></input>
                 </div>
                 <div className={classes.inputField}>
-                    <input onChange={this.props.change} placeholder="Retype password" type="password"></input>
+                    <input onChange={this.props.change} placeholder="Retype password" type="password" id="retypedPassword"></input>
                 </div>
                 <div>
                     <button className={classes.button}>REGISTER</button>

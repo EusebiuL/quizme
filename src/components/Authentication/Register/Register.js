@@ -9,6 +9,7 @@ class Register extends Component {
         name:"",
         phone:"",
         password: "",
+        retypedPassword: "",
         authError: ""
     };
     
@@ -21,19 +22,22 @@ class Register extends Component {
       handleSubmit = e => {
         e.preventDefault();
     
+        if(this.state.password===this.state.retypedPassword && this.state.password !==''&& this.state.retypedPassword!==''){
         axios
-          .post("http://localhost:8090/api/user", {
+          .post("http://108fb526.ngrok.io/api/user", {
             email: this.state.email,
-            password: this.state.password,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName
-          })
-          .then(res => {
-            console.log(res);
-            console.log(res.data);
-            this.props.authStatus(true, this.state.email);
-            this.props.history.push("/");
-          });
+            name: this.state.name,
+            phoneNumber: this.state.phone,
+            password: this.state.password
+          }).then( res => {
+            this.props.history.push("/login");
+          },
+          err => {console.log("eroare")});
+        }
+        else {
+          this.authError = true;
+        }
+
       };
     render() {
         const error = this.state.authError ? (
@@ -43,7 +47,7 @@ class Register extends Component {
           return (
         <div className={classes.outerdiv}>
             <RegisterForm 
-                change={this.handleChange} 
+                change={(event) => this.handleChange(event)} 
                 submit={this.handleSubmit}  
             />
             
